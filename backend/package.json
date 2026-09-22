@@ -4,10 +4,14 @@
   "description": "Multi-Venture Apartment & Property Management OS - Node.js Express Backend",
   "main": "src/server.js",
   "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
-    "seed": "node src/database/seed.js"
+    "seed": "node src/database/seed.js",
+    "build": "npm rebuild sqlite3 || true"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

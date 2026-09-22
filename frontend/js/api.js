@@ -2,7 +2,10 @@ import { CONFIG } from './config.js';
 
 class ApiService {
   constructor() {
-    this.baseUrl = CONFIG.API_BASE_URL;
+  }
+
+  get baseUrl() {
+    return CONFIG.API_BASE_URL;
   }
 
   getToken() {

@@ -3,6 +3,7 @@ import { api } from '../api.js';
 import { showToast } from './toast.js';
 import { openAddVentureModal } from './ventureModal.js';
 import { openRegisterModal } from './registerModal.js';
+import { openApiConfigModal } from './apiConfigModal.js';
 import { realtime } from '../realtime.js';
 
 export function renderHeader(containerId) {
@@ -92,6 +93,10 @@ export function renderHeader(containerId) {
         <i class="fa-solid fa-user-plus"></i> Register
       </button>
 
+      <button class="btn btn-secondary btn-sm" id="btn-header-api-config" title="API Endpoint Settings (Render / Vercel)">
+        <i class="fa-solid fa-cloud"></i> API
+      </button>
+
       <div class="badge ${activeRole === 'SUPER_ADMIN' ? 'badge-primary' : (activeRole.includes('ADMIN') ? 'badge-cyan' : 'badge-purple')}">
         <i class="fa-solid fa-shield-halved"></i>
         ${activeRole}
@@ -118,6 +123,11 @@ export function renderHeader(containerId) {
   const registerUserBtn = document.getElementById('btn-header-register-user');
   if (registerUserBtn) {
     registerUserBtn.onclick = () => openRegisterModal();
+  }
+
+  const apiConfigBtn = document.getElementById('btn-header-api-config');
+  if (apiConfigBtn) {
+    apiConfigBtn.onclick = () => openApiConfigModal();
   }
 
   // Notification Tray Toggle

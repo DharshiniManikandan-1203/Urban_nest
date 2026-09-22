@@ -22,8 +22,26 @@ import auditRoutes from './routes/audit.routes.js';
 
 const app = express();
 
-app.use(cors());
+// Enable CORS for all origins (supports Vercel frontend, preview branches, and custom domains)
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
+  credentials: false
+}));
+
 app.use(express.json());
+
+// Health check endpoint for Render service monitoring
+app.get(['/health', `${CONFIG.API_PREFIX}/health`], (req, res) => {
+  res.status(200).json({
+    status: 'healthy',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    platform: 'Urban Nest Backend',
+    version: '1.0.0'
+  });
+});
 
 // Register API v1 routes
 app.use(`${CONFIG.API_PREFIX}/auth`, authRoutes);
