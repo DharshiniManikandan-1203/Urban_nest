@@ -18,8 +18,7 @@ function resolveApiBaseUrl() {
   }
 
   // 4. Default for production (e.g. Vercel deployment)
-  // Can be relative '/api/v1' or configured to your Render backend
-  return '/api/v1';
+  return 'https://urban-nest-1-tud1.onrender.com/api/v1';
 }
 
 export const CONFIG = {
