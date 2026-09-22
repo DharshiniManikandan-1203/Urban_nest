@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node backend/src/server.js",
-    "build": "npm rebuild sqlite3 || true",
+    "build": "echo 'Static frontend ready'",
     "dev:backend": "cd backend && npm run dev",
     "dev:frontend": "cd frontend && npm start"
   },
